@@ -1,10 +1,15 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Home from './components/Home';
+import LandingPage from './components/LandingPage';
+import Nav from './components/Nav';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Henry Pokemon</h1>
-    </div>
+    <Routes>
+       <Route exact path='/' element={<LandingPage/>} />
+       <Route exact path='/home' element={<Home/>}/>
+    </Routes>
   );
 }
 
