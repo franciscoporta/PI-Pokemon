@@ -1,0 +1,43 @@
+.container{
+    display: flex;
+    align-items: center;
+    background-color: rgb(43, 43, 43);;
+    width: 100%;
+    /* background-color: #fff; */
+    justify-content: space-between;
+    padding: 1rem 5%;
+    height: 100px;
+}
+
+
+.landing{
+    display: flex;
+    cursor: pointer;
+    margin: 0 15px;
+    width: 100px;
+}
+
+.create{
+    padding: 1rem 2rem;
+    height: 55px;
+    background-color: cornflowerblue;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.home{
+    padding: 1rem 2rem;
+    height: 55px;
+    background-color: cornflowerblue;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+
+}

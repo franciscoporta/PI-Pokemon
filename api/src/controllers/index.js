@@ -23,7 +23,7 @@ const getPokemones = async () => {
         return {
             id: p.data.id,
             name: p.data.name,
-            img: p.data.sprites.other.dream_world.front_default,
+            img: p.data.sprites.other['official-artwork'].front_default,
             attack: p.data.stats[1].base_stat,
             types: p.data.types.map(m => m.type.name),
         }
@@ -40,7 +40,7 @@ const getPokemones = async () => {
         }
     })
 
-    //PREGUNTAR PORQUE SE HACE ESTO
+    
     callDB = callDB.map(m => {
         return {
         ...m.dataValues, 
