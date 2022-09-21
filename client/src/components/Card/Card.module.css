@@ -10,6 +10,7 @@
     flex-direction: column;
     align-items: flex-start;
 }
+
 .card{
     position: relative;
     width: 400px;
@@ -20,15 +21,19 @@
     font-size: 1rem;
     border-radius: 0.8rem;
     box-shadow: 0 2.8px 2.2px rgb(0 0 0 / 3%), 0 6.7px 5.3px rgb(0 0 0 / 5%), 0 12.5px 10px rgb(0 0 0 / 6%);
-    transition: all 3s;
+    transition: all 2s;
     z-index: 5;
     cursor: pointer;
-    background-color: coral;
+    /* background-color: coral; */
+}
+.asd{
+    background-color: #5fbd58;
 }
 
 .card:hover{
     transform: translateY(-3%);
 }
+
 .pokemonImg{
     position: absolute;
     width: 100px;

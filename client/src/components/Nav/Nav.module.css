@@ -1,9 +1,8 @@
 .container{
     display: flex;
     align-items: center;
-    background-color: rgb(43, 43, 43);;
+    background-color: rgb(43, 43, 43);
     width: 100%;
-    /* background-color: #fff; */
     justify-content: space-between;
     padding: 1rem 5%;
     height: 100px;
@@ -19,7 +18,7 @@
 
 .create{
     padding: 1rem 2rem;
-    height: 55px;
+    height: 50px;
     background-color: cornflowerblue;
     font-size: 1rem;
     border-radius: 0.5rem;
@@ -31,7 +30,7 @@
 
 .home{
     padding: 1rem 2rem;
-    height: 55px;
+    height: 50px;
     background-color: cornflowerblue;
     font-size: 1rem;
     border-radius: 0.5rem;

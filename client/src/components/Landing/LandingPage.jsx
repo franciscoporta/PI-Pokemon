@@ -1,7 +1,7 @@
 import React from "react"
-import s from '../styles/LandingPage.module.css'
-import charizard from '../img/charizard.jpg'
-import pokemon from '../img/logo.jpg'
+import s from './LandingPage.module.css'
+import charizard from '../../img/charizard.jpg'
+import pokemon from '../../img/logo.jpg'
 import { Link } from "react-router-dom"
 
 

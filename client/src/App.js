@@ -3,7 +3,7 @@ import './App.css';
 import Create from './components/Create/Create'
 import Home from './components/Home/Home';
 // import Home from './components/Home';
-import LandingPage from './components/LandingPage';
+import LandingPage from './components/Landing/LandingPage';
 
 
 function App() {
