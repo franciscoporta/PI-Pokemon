@@ -1,4 +1,90 @@
 .pagination{
     background-color: rgb(43, 43, 43);
-    height: 1000px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 125px;
+    padding: 15px;
 }
+
+.ul{
+    display: flex;
+    list-style: none;
+    text-decoration: none;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.number{
+    cursor: pointer;
+    margin: 0 25px;
+    display: flex;
+    align-self: center;
+}
+
+
+/* LOS NUMEROS CUANDO NO ESTAN ACTIVOS */
+.a2{
+    color: white;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 2rem;
+    background-color: rgb(43, 43, 43);
+    height: 2rem;
+    width: 2rem;
+    cursor: pointer;
+    /* border: 1px solid rgb(0, 0, 0); */
+    
+    /* text-shadow: 1px 0 0 #fff, -1px 0 0 #fff,
+   0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px 0 #fff, -1px -1px 0 #fff,
+   -1px 1px 0 #fff, 1px -1px 0 #fff; */
+}
+.a{
+    display: flex;
+    justify-content: center;
+    width: 2rem;
+    align-items: center;
+    height: 2rem;
+    color: #fff;
+    border-radius: 2rem;
+    background-color: #58abf6;
+}
+/* HOVER(CUANDO LO PASO POR ARRIBA) DEL QUE ESTA ACTIVO */
+.a:hover{
+    /* transition: background-color .8s;
+    background-color: #5dc1cf;
+    color: white;
+    border: 1.5px solid white; */
+    display: flex;
+    justify-content: center;
+    width: 2rem;
+    align-items: center;
+    height: 2rem;
+    color: #fff;
+    border-radius: 2rem;
+    background-color: #58abf6;
+    cursor: pointer;
+} 
+
+
+/* HOVER(CUANDO LE PASO POR ARRIBA A LOS QUE NO ESTAN ACTIVOS) */
+
+.a2:hover{
+    
+        display: flex;
+        justify-content: center;
+        width: 2rem;
+        align-items: center;
+        height: 2rem;
+        color: #fff;
+        border-radius: 2rem;
+        background-color: rgb(43, 43, 43);
+}
+
+

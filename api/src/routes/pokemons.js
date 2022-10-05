@@ -3,8 +3,8 @@ const { getPokemones, getPokemonesByNameInApi, getPokemonesByNameInApiOrDB, getP
 const router = require('express').Router();
 
 router.get('/', async (req, res) => {
-    const {name} = req.query;
-        try {
+    try {
+            const {name} = req.query;
             if(!name) return res.status(201).json(await getPokemones());
             return res.status(200).json(await getPokemonesByNameInApiOrDB(name));  
         } catch (error) {
@@ -31,6 +31,18 @@ router.post('/', async (req,res) => {
         
     } catch (error) {
         console.log(error)
+    }
+})
+
+router.delete('/:id',async(req,res)=>{
+    try{
+        let {id}= req.params;
+        await Pokemon.destroy({
+            where:{id}
+        })
+        res.status(201).json('pokemons deleted')
+    }catch(err){
+        res.status(418).json(console.log(err))
     }
 })
 

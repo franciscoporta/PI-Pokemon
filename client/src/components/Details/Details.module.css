@@ -1,0 +1,11 @@
+.home{
+    padding: 1rem 2rem;
+    height: 55px;
+    background-color: cornflowerblue;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+}

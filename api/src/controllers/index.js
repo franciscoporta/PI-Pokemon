@@ -55,27 +55,32 @@ const getPokemones = async () => {
 
 //ACA ME TRAIGO LOS POKEMONES DE LA API Y DE LA BD POR QUERY(NAME)
 const getPokemonesByNameInApi = async (value) => {
-    const callApi = await axios.get(`https://pokeapi.co/api/v2/pokemon/${value.toLowerCase().trim()}`);
-    const infoPokemon =  {
-            id:callApi.data.id,
-            name:callApi.data.name,
-            height:callApi.data.height,
-            hp:callApi.data.stats[0].base_stat,
-            attack: callApi.data.stats[1].base_stat,
-            defense: callApi.data.stats[2].base_stat,
-            speed: callApi.data.stats[5].base_stat,
-            weight: callApi.data.weight,
-            types: callApi.data.types.map(m=>m.type.name),
-            img: callApi.data.sprites.other.dream_world.front_default,
+    try{
+
+        const callApi = await axios.get(`https://pokeapi.co/api/v2/pokemon/${value.toLowerCase().trim()}`);
+        const infoPokemon =  {
+                id:callApi.data.id,
+                name:callApi.data.name,
+                height:callApi.data.height,
+                life:callApi.data.stats[0].base_stat,
+                attack: callApi.data.stats[1].base_stat,
+                defense: callApi.data.stats[2].base_stat,
+                speed: callApi.data.stats[5].base_stat,
+                weight: callApi.data.weight,
+                types: callApi.data.types.map(m=>m.type.name),
+                img: callApi.data.sprites.other['official-artwork'].front_default,
+        }
+        return infoPokemon;
+    } catch(err){
+        console.log(err)
     }
 
-    return infoPokemon;
 }
 
 //ACA ME TRAIGO LOS POKEMONS DE LA DB Y DE LA API POR QUERY(NAME)
 const getPokemonesByNameInApiOrDB = async (name) => {
 
-    const callDB = Pokemon.findOne({
+    let callDB = await Pokemon.findAll({
         where:{name:name.toLowerCase().trim()},
         attributes: ['id', 'name', 'life', 'attack', 'defense', 'speed', 'height', 'weight', 'img'],
         include:{
@@ -86,6 +91,12 @@ const getPokemonesByNameInApiOrDB = async (name) => {
               },
         }
     })
+
+    callDB= callDB.map(m => {
+        return {
+        ...m.dataValues, 
+       types: m.types?.map( m=> m.name)
+    }})
 
     if(!callDB[0]) return await getPokemonesByNameInApi(name); 
     return callDB[0];
@@ -103,13 +114,13 @@ const getPokemonesByIdInApi = async (id) => {
                 id:callApi.data.id,
                 name:callApi.data.name,
                 height:callApi.data.height,
-                hp:callApi.data.stats[0].base_stat,
+                life:callApi.data.stats[0].base_stat,
                 attack: callApi.data.stats[1].base_stat,
                 defense: callApi.data.stats[2].base_stat,
                 speed: callApi.data.stats[5].base_stat,
                 weight: callApi.data.weight,
-                types: callApi.data.types.map(m=>m.type.name),
-                img: callApi.data.sprites.other.dream_world.front_default,
+                types: callApi.data.types.map(m => m.type.name),
+                img: callApi.data.sprites.other['official-artwork'].front_default,
         }
         return infoApi;
     }catch(error){
@@ -190,9 +201,9 @@ const postPokemons = async (name, life, attack, defense, speed, height, weight, 
 const getTypes = async () => {
 
     let callDB = await Type.findAll();
-
+    
     if(callDB.length === 0){
-
+        
         const callApi = await axios.get('https://pokeapi.co/api/v2/type');
         let infoApi = await callApi.data.results.map( t => {
             return {
@@ -201,6 +212,7 @@ const getTypes = async () => {
         })
         infoApi = await Type.bulkCreate(infoApi);
     }
+
     return callDB;
 }
 

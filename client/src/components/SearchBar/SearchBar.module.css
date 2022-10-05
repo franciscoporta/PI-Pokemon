@@ -14,7 +14,18 @@
     box-shadow: 0 2.5px 7.5px rgb(0 0 0 / 10%);
     margin: 0 15px;
 }
+.menu{
+    background-color: rgb(31, 31, 31);
+    color: rgb(255, 255, 255);
 
+
+    display: flex;
+
+
+    justify-content: space-between;
+    align-content: center;
+    padding: 2rem 5%;
+}
 
 
 .input{
@@ -24,14 +35,19 @@
     transition: unset;
     
     
-
+    height: 43px;
+    width: 265px;
     display: flex;
-    width: 100%;
+    /* width: 100%; */
     justify-content: center;
     align-self: start;
-    color: #424242;
     border: unset;
     outline: unset;
     background-color: none;
     
+}
+
+
+.menuRigth{
+    display: flex;
 }
