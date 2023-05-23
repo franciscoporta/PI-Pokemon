@@ -44,19 +44,20 @@ export default function Home (){
                 <SearchBar />
                 </div>
                 <div >
-                        <div className={s.cards} >
+                        <div className={ pokemonsInPage.length!==0 ? s.cards : s.loading} >
                             {
                                 pokemonsInPage.length!==0?pokemonsInPage.map(pokemon => (
                                         <Card
+                                            key={pokemon.id}
                                             id={pokemon.id}
                                             name={pokemon.name}
                                             img={pokemon.img}
                                             types={pokemon.types}
-                                            key={pokemon.id}
                                             />
                                             ))
                                             :<Loading/>    
                                         }
+                                       
                         </div>
                     <div>
                         <Pagination

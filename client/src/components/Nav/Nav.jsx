@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 //import SearchBar from "../SearchBar/SearchBar";
 import s from './Nav.module.css'
 import pokemon from '../../img/logo.jpg'
@@ -10,7 +10,7 @@ export default function Nav () {
 
     const dispatch = useDispatch();
     const types = useSelector((state) => state.types);
-    
+    const navigate = useNavigate();
     
 
     function handleCreated(e){
@@ -29,6 +29,9 @@ export default function Nav () {
         e.preventDefault()
         dispatch(getPokemons())
         dispatch(paging(1))
+        if( window.location.pathname !== '/home'){
+            navigate('/home')
+        }
     }
     
     function handleType(e){

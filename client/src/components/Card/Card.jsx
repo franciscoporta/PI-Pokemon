@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import s from './Card.module.css'
+import page404 from '../../img/imgDefault.jpg'
 
 function color (types){
     let style = {
@@ -59,10 +60,10 @@ export default function Card ({name, img, types, id }) {
     return(
         <div className={s.cardsContainer}>
             <Link key={id} to={'/details/'+id} className={s.link} >
-                <div className={s.card} style={color(types)} >
+                <div className={s.card} style={color(types)} key={id}>
                     <div className={s.cardInfo} key={id}>
                         <h3>{name.charAt(0).toUpperCase()+name.slice(1)}</h3>
-                        <img className={s.pokemonImg} src={img} alt='Icono'/>
+                        <img className={s.pokemonImg} src={img ? img : page404} alt='Icono'/>
                         {
                             types && types.map(type => <span >{type.charAt(0).toUpperCase()+type.slice(1)} </span>)
                         }
