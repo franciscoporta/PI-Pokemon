@@ -12,10 +12,21 @@ export default function Nav () {
     const types = useSelector((state) => state.types);
     const navigate = useNavigate();
     
+    /*
+     function clearFilter(e){
+        document.getElementById("rating").selectedIndex = 0; //selectedindex devuelve el indice de la opcion seleccionado en un select(desplegable)
+        document.getElementById("az").selectedIndex = 0;
+        document.getElementById("filter").selectedIndex = 0;
+        document.getElementById("genre").selectedIndex = 0;
+        document.getElementsByClassName("input")[0].value = "";
+        dispatch(getVideoGames())
+    }
+    */
 
     function handleCreated(e){
         // console.log(e.target.value)
         dispatch(filterCreated(e.target.value))
+        document.getElementById("Types").selectedIndex = 0
     }
 
 
@@ -38,12 +49,17 @@ export default function Nav () {
         e.preventDefault()
         dispatch(filterType(e.target.value))
         dispatch(paging(1))
+        document.getElementById("dbOrApi").selectedIndex = 0
+        
     }
 
     function handleName(e){
         e.preventDefault()
         dispatch(orderName(e.target.value))
         dispatch(paging(1))
+        document.getElementById("dbOrApi").selectedIndex = 0
+        document.getElementById("Types").selectedIndex = 0
+        document.getElementById("Alphabet").selectedIndex = 0
     }
 
 
@@ -54,38 +70,40 @@ export default function Nav () {
             <Link onClick={(e) => handleClick(e)} className={s.home} > Home </Link>     
 
             <Link to='/create' className={s.create}> Create </Link>
-            <div className={s.menuRight}>
-            <div>
-                <select onChange={ e => handleType(e)}>
-                    <option value='All'>All</option>
+            {
+                window.location.pathname === '/home' ? 
+            <div className={s.navRigth}>
+                <p className={s.text}>Filter by:  </p>
+                <select onChange={ e => handleType(e)} className={s.selectTypes} id='Types'>
+                    <option value='All' className={s.textTypes}>Types</option>
                     {
                         types.map(type => 
-                        <option value={type.name} key={type.name}>
+                        <option value={type.name} key={type.name} className={s.textTypes}>
                             {type.name}
                         </option>)
                     }
                 </select>
-                <label>
-                Show Pokemons
-                <select onChange={e => handleCreated(e)}>
-                    <option value='All'>All</option>
-                    <option value='Created'>From DB</option>
-                    <option value='Api'>From Api</option>
+
+                <select onChange={e => handleCreated(e)} className={s.selectTypes} id='dbOrApi'>
+                    <option value='All' className={s.textTypes}>Dd or Api</option>
+                    <option value='Created' className={s.textTypes}>From DB</option>
+                    <option value='Api' className={s.textTypes}>From Api</option>
                 </select>
-                </label>
-                <select onChange={e => handleAttack(e)}>
-                    <option value='All'>By Attack</option>
-                    <option value='Min'>Min</option>
-                    <option value='Max'>Max</option>
+
+                <select onChange={e => handleAttack(e)} className={s.selectTypes} id='Attack'>
+                    <option value='All' className={s.textTypes}>Attack</option>
+                    <option value='Min' className={s.textTypes}>Min</option>
+                    <option value='Max' className={s.textTypes}>Max</option>
                 </select>
-                <select onChange={e => handleName(e)}>
-                    <option value='All'>All</option>
-                    <option value='A - Z'>A - Z</option>
-                    <option vale='Z - A'>Z - A</option>
+
+                <select onChange={e => handleName(e)} className={s.selectTypes} id='Alphabet'>
+                    <option value='All' className={s.textTypes}>Alphabet</option>
+                    <option value='A - Z' className={s.textTypes}>A - Z</option>
+                    <option vale='Z - A' className={s.textTypes}>Z - A</option>
                 </select>
             </div>
-        </div>
-            {/* <SearchBar/> */}
+        : null
+            }
         </div>
     )
 }

@@ -38,5 +38,32 @@
     font-weight: 500;
     cursor: pointer;
     text-decoration: none;
-
 }
+
+.navRigth{
+    display: flex;
+    align-items: center;
+    width:30%;
+}
+
+.selectTypes{
+    display: inline-block;
+    border-radius: 10px;
+    width:20%;
+    background-color: rgb(43, 43, 43);
+    border: 1px solid white;
+    padding:2%;
+    color:white;
+    margin:2%;
+    cursor: pointer;
+}
+
+.textTypes{
+    color:white;
+}
+
+.text{
+    color:white;
+    align-items: center;
+}
+

@@ -13,7 +13,6 @@ import imagen404 from '../../img/imgDefault.jpg'
 export default function Details() {
     const dispatch = useDispatch();
     const detail = useSelector((state) => state.detail)
-    //console.log(detail)
     const navigate = useNavigate();
     const {id} = useParams();
     
@@ -95,12 +94,12 @@ export default function Details() {
             {
                 Object.keys(detail).length!==0?
                         <div className={s.card}>
-                            <div> 
-                                {detail.inDB?<button onClick={(e) => handleClick(e)}> X </button>:null}
+                            <div className={s.divButton}> 
+                                {detail.inDB?<button onClick={(e) => handleClick(e)} className={s.button}> Delete Pokemon </button>:null}
                             </div>
 
                             <div className={s.divImg}>
-                                <img src={!detail.img ? imagen404 : detail.img} className={s.img} alt='icono'/>
+                                <img src={detail.img.length > 10 ?  detail.img : imagen404} className={s.img} alt='icono'/>
                             </div>
 
                             <div className={s.divData}>

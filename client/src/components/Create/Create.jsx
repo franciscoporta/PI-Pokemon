@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Link, useNavigate} from "react-router-dom"
+import { useNavigate} from "react-router-dom"
 import { getTypes, postPokemon } from "../../redux/actions"
-//import Nav from "./Nav/Nav.jsx"
+import Nav from '../Nav/Nav'
 import s from './Create.module.css'
 
 
@@ -51,108 +51,135 @@ export default function Create () {
         })
     }
     return(
-        <div>
-            <br/><br/>
-            <div>
-                <Link to='/home' className={s.home}> Home </Link>
-                Creacion
-            </div>
-            <br/><br/><br/>
-            <form onSubmit={(e) => handleSumbit(e)}>
-                <label>
-                    Name:
+        <div className={s.container}>
+
+            <Nav/>
+
+            <div className={s.divContainer}>
+
+            <form onSubmit={(e) => handleSumbit(e)} className={s.cont}>
+                <div className={s.formRow}>
+                <label className={s.text}>
+                        Name:
                 <input
                 type='text'
                 name='name'
                 value={input.name}
-                placeholder="Name..."
+                placeholder="    Name..."
                 onChange={(e) => handleInput(e)}
+                className={s.input}
                 />
                 </label>
-                <label>
-                    Life:
+
+
+                 <label className={s.text}>
+                      Life:
                     <input
                     type='number'
                     name='life'
                     value={input.life}
-                    placeholder="1-100"
+                    placeholder="    1-100"
                     onChange={(e) => handleInput(e)}
-                />
-                </label>
-                <label>
-                    Attack:
+                    className={s.input}
+                    />
+                    </label>
+ 
+
+                    <label className={s.text}>
+                     Attack:
                     <input
                     type='number'
                     name='attack'
                     value={input.attack}
                     placeholder="1-100"
                     onChange={(e) => handleInput(e)}
-                />
-                </label>
-                <label>
-                    Defense:
+                    className={s.input}
+                    />
+                    </label>
+
+
+                    <label className={s.text}>
+                      Defense:
                     <input
                     type='number'
                     name='defense'
                     value={input.defense}
-                    placeholder="1-100"
+                    placeholder="    1-100"
                     onChange={(e) => handleInput(e)}
-                />
-                </label>
-                <label>
-                    Speed:
+                    className={s.input}
+                    />
+                    </label>
+                </div>
+
+                <div className={s.formRowRigth}>
+
+                    <label className={s.text}>
+                        Speed:
                     <input
                     type='number'
                     name='speed'
                     value={input.speed}
-                    placeholder="1-100"
+                    placeholder="    1-100"
                     onChange={(e) => handleInput(e)}
-                />
-                </label>
-                <label>
-                    Weigth:
+                    className={s.input}
+                    />
+                    </label>
+
+                    <label className={s.text}>
+                        Weigth:
                     <input
                     type='number'
                     name='weight'
                     value={input.weight}
-                    placeholder="1-100"
+                    placeholder="    1-100"
                     onChange={(e) => handleInput(e)}
-                />
-                </label>
-                <label>
+                    className={s.input}
+                    />
+                    </label>
+
+
+                <label className={s.text}>
                     Height:
                     <input
                     type='number'
                     name='height'
                     value={input.height}
-                    placeholder="1-100"
+                    placeholder="    1-100"
                     onChange={(e) => handleInput(e)}
-                />
-                </label>
-                <label>
+                    className={s.input}
+                    />
+                    </label>
+
+                <label className={s.text}>
                     Imagen:
                     <input
                     type='text'
                     name='img'
                     value={input.img}
-                    placeholder="Url..."
+                    placeholder="    Url..."
                     onChange={(e) => handleInput(e)}
-                />
-                </label>
-                <label>
+                    className={s.input}
+                    />
+                    </label>
+                <label className={s.text}>
                     Types:
-                <select onChange={(e) => handleSelect(e)}> 
+                <select onChange={(e) => handleSelect(e)} className={s.selectType}> 
                     <option>Choose Types</option>
                     {allTypes?.map((types) => (
-                        <option value={types.name} key={types.id}>
+                        <option className={s.textTypes} value={types.name} key={types.id}>
                             {types.name}
                         </option>
                     ))}
                 </select>
                 </label>
-                <ul><li>{input.types.map((el) => el + ' ,')}</li></ul>
-                <button type='submit'>Create Pokemon</button>
+                {
+                    input.types.length ? <ul><li className={s.ulTypes}>{input.types.map((el) => el + ', ')}</li></ul> : null
+                }
+                </div>
+
+                <button type='submit' className={s.button}>Create Pokemon</button>
             </form>
+            </div>
         </div>
     )
 }
